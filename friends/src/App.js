@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
 import Login from './components/Login'
-import {Friends} from './components/Friends'
+import FriendsList from './components/FriendsList'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import PrivateRoute from './utils/ProtectedRoute';
 
 function App() {
   return (
@@ -10,14 +11,14 @@ function App() {
       <div className="App">
         <ul>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/api/login">Login</Link>
           </li>
           <li>
             <Link to="/protected">Protected Page</Link>
           </li>
         </ul>
         <Switch>
-          <Route exact path="/protected" component={Friends} />
+          <PrivateRoute exact path="/protected" component={FriendsList} />
           <Route path="/login" component={Login} />
           <Route component={Login} />
           {/* component ==> history, match (params), location */}
